@@ -16,10 +16,9 @@ import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score
 
-# `mlflow run` tidak otomatis mengarahkan run ke experiment tertentu (akan
-# jatuh ke experiment "Default") kecuali diset eksplisit di sini. Nama ini
-# harus sama persis dengan yang dicari via mlflow.search_runs() di ci.yml.
-mlflow.set_experiment("Diabetes_Classification_CI")
+# Nama experiment diset lewat flag `--experiment-name` pada command
+# `mlflow run` di ci.yml (bukan di sini) — memanggil mlflow.set_experiment()
+# di dalam script akan bentrok dengan active run yang sudah dibuat oleh CLI.
 
 train_df = pd.read_csv("diabetes_preprocessing/train.csv")
 test_df = pd.read_csv("diabetes_preprocessing/test.csv")

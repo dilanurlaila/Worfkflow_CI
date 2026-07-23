@@ -25,7 +25,7 @@ jobs:
       - name: Run MLflow Project (training)
         working-directory: MLProject
         run: |
-          mlflow run . --env-manager=local
+          mlflow run . --env-manager=local --experiment-name "Diabetes_Classification_CI"
 
       # --- Skilled: simpan artefak hasil training ke repo GitHub yang sama ---
       - name: Upload MLflow run artifacts (Skilled)
